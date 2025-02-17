@@ -3,8 +3,12 @@ import { useId } from "react";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
+import { addContact } from "../../redux/contactsSlice";
+import { useDispatch } from "react-redux";
 
 const ContactForm = ({ addUser }) => {
+  const dispatch = useDispatch();
+
   const nameId = useId();
   const telefonId = useId();
 
@@ -24,12 +28,23 @@ const ContactForm = ({ addUser }) => {
     number: "",
   };
 
+  // const handleSubmit = (values, actions) => {
+  //   addUser({
+  //     id: nanoid(),
+  //     name: values.name,
+  //     number: values.number,
+  //   });
+  //   actions.resetForm();
+  // };
+
   const handleSubmit = (values, actions) => {
-    addUser({
-      id: nanoid(),
-      name: values.name,
-      number: values.number,
-    });
+    dispatch(
+      addContact({
+        id: nanoid(),
+        name: values.name,
+        number: values.number,
+      })
+    );
     actions.resetForm();
   };
 
