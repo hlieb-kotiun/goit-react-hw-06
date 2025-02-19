@@ -6,7 +6,7 @@ import s from "./ContactForm.module.css";
 import { addContact } from "../../redux/contactsSlice";
 import { useDispatch } from "react-redux";
 
-const ContactForm = ({ addUser }) => {
+const ContactForm = () => {
   const dispatch = useDispatch();
 
   const nameId = useId();
